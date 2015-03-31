@@ -27,12 +27,12 @@ public class DetailWindow extends Window {
 
 		windowLayout.addComponent(contentLayout);
 
-		GridLayout buttonLayout = new GridLayout(3, 1);
+		GridLayout buttonLayout = new GridLayout(4, 1);
 		buttonLayout.setWidth(100f, Unit.PERCENTAGE);
 		buttonLayout.setMargin(true);
 		Label questionLabel = new Label("Heeft dit 't probleem opgelost?");
 		buttonLayout.addComponent(questionLabel, 0, 0);
-		
+
 		Button yesButton = new Button();
 		yesButton.setHeight(60f, Unit.PIXELS);
 		yesButton.setIcon(new ClassResource("yes.png"));
@@ -56,6 +56,18 @@ public class DetailWindow extends Window {
 		});
 		buttonLayout.addComponent(noButton, 2, 0);
 
+		Button incidentButton = new Button();
+		incidentButton.setCaption("meld incident");
+		incidentButton.setHeight(60f, Unit.PIXELS);
+		// incidentButton.setIcon(new ClassResource("yes.png"));
+		incidentButton.addClickListener(new Button.ClickListener() {
+			public void buttonClick(ClickEvent event) {
+				Notification.show("Incident:", null, Type.TRAY_NOTIFICATION);
+				//close();
+
+			}
+		});
+		buttonLayout.addComponent(incidentButton, 3, 0);
 		windowLayout.addComponent(buttonLayout);
 
 		setContent(windowLayout);
